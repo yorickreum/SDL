@@ -257,6 +257,7 @@ extern int SDL_AppleTVRemoteOpenedAsJoystick;
         }
 #endif
         if (!handled) {
+            CGPoint locationInView;
             SDL_TouchDeviceType touchType = [self touchTypeForTouch:touch];
             SDL_TouchID touchId = [self touchIdForType:touchType];
             float pressure = [self pressureForTouch:touch];
@@ -267,7 +268,7 @@ extern int SDL_AppleTVRemoteOpenedAsJoystick;
 
             /* FIXME, need to send: int clicks = (int) touch.tapCount; ? */
 
-            CGPoint locationInView = [self touchLocation:touch shouldNormalize:YES];
+            locationInView = [self touchLocation:touch shouldNormalize:YES];
             SDL_SendTouch(touchId, (SDL_FingerID)((size_t)touch), sdlwindow,
                           SDL_TRUE, locationInView.x, locationInView.y, pressure);
         }
@@ -312,6 +313,7 @@ extern int SDL_AppleTVRemoteOpenedAsJoystick;
         }
 #endif
         if (!handled) {
+            CGPoint locationInView;
             SDL_TouchDeviceType touchType = [self touchTypeForTouch:touch];
             SDL_TouchID touchId = [self touchIdForType:touchType];
             float pressure = [self pressureForTouch:touch];
@@ -322,7 +324,7 @@ extern int SDL_AppleTVRemoteOpenedAsJoystick;
 
             /* FIXME, need to send: int clicks = (int) touch.tapCount; ? */
 
-            CGPoint locationInView = [self touchLocation:touch shouldNormalize:YES];
+            locationInView = [self touchLocation:touch shouldNormalize:YES];
             SDL_SendTouch(touchId, (SDL_FingerID)((size_t)touch), sdlwindow,
                           SDL_FALSE, locationInView.x, locationInView.y, pressure);
         }
@@ -348,6 +350,7 @@ extern int SDL_AppleTVRemoteOpenedAsJoystick;
         }
 #endif
         if (!handled) {
+            CGPoint locationInView;
             SDL_TouchDeviceType touchType = [self touchTypeForTouch:touch];
             SDL_TouchID touchId = [self touchIdForType:touchType];
             float pressure = [self pressureForTouch:touch];
@@ -356,7 +359,7 @@ extern int SDL_AppleTVRemoteOpenedAsJoystick;
                 continue;
             }
 
-            CGPoint locationInView = [self touchLocation:touch shouldNormalize:YES];
+            locationInView = [self touchLocation:touch shouldNormalize:YES];
             SDL_SendTouchMotion(touchId, (SDL_FingerID)((size_t)touch), sdlwindow,
                                 locationInView.x, locationInView.y, pressure);
         }
