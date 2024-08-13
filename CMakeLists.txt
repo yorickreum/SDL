@@ -2092,6 +2092,7 @@ elseif(APPLE)
 
   if(IOS OR TVOS OR VISIONOS OR WATCHOS)
     file(GLOB SDLMAIN_SOURCES ${SDL2_SOURCE_DIR}/src/main/uikit/*.c)
+    add_compile_definitions(GLES_SILENCE_DEPRECATION)
   endif()
 
   if(SDL_MISC)
